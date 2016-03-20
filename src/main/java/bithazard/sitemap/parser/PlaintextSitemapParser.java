@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -25,14 +26,14 @@ class PlaintextSitemapParser implements ISitemapParser {
     private Set<SitemapEntry> sitemapEntries;
     private boolean validUrlFound = false;
 
-    PlaintextSitemapParser(String urlPrefix, InputStream inputStream) {
+    public PlaintextSitemapParser(String urlPrefix, InputStream inputStream) {
         this.urlPrefix = urlPrefix;
         this.inputStream = inputStream;
     }
 
     @Override
     public void parse() {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
         sitemapEntries = new LinkedHashSet<>();
         String line;
         int lineCount = 0;

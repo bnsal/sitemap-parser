@@ -36,7 +36,7 @@ class XmlSitemapParser implements ISitemapParser {
     private final Date minLastMod;
     private XmlSitemapHandler xmlSitemapHandler;
 
-    XmlSitemapParser(InputStream inputStream, String urlPrefix, boolean continueOnErrors, Date minLastMod) {
+    public XmlSitemapParser(InputStream inputStream, String urlPrefix, boolean continueOnErrors, Date minLastMod) {
         this.inputStream = inputStream;
         this.urlPrefix = urlPrefix;
         this.continueOnErrors = continueOnErrors;
@@ -98,7 +98,7 @@ class XmlSitemapParser implements ISitemapParser {
         return xmlSitemapHandler.sitemapType;
     }
 
-    private class XmlSitemapHandler extends DefaultHandler {
+    private static class XmlSitemapHandler extends DefaultHandler {
         private final String urlPrefix;
         private final Date minLastMod;
         private final boolean continueOnErrors;

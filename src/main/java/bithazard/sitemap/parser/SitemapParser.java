@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -147,15 +148,14 @@ public class SitemapParser {
      */
     public Set<String> getSitemapLocations(URL url) {
         URL robotsTxtUrl = HttpConnection.getRobotsTxtUrl(url);
-        HttpConnection httpConnection = new HttpConnection(robotsTxtUrl, userAgent, timeout, ignoreTlsCertificates);
-        try {
+        try (HttpConnection httpConnection = new HttpConnection(robotsTxtUrl, userAgent, timeout, ignoreTlsCertificates)) {
             int responseCode = httpConnection.getResponseCode();
             if (responseCode < 200 || responseCode >= 300) {
                 throw new InvalidSitemapUrlException("Sitemap locations could not be found. Robots.txt returned HTTP status code "
                         + responseCode + ".");
             }
             Set<String> sitemapLines = new LinkedHashSet<>();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpConnection.getInputStream()));
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpConnection.getInputStream(), StandardCharsets.UTF_8));
             String line;
             try {
                 while ((line = bufferedReader.readLine()) != null) {
@@ -170,8 +170,6 @@ public class SitemapParser {
                 throw new InvalidSitemapUrlException("Sitemap locations could not be found. Robots.txt does not contain Sitemap entry.");
             }
             return sitemapLines;
-        } finally {
-            httpConnection.disconnect();
         }
     }
 
@@ -316,16 +314,13 @@ public class SitemapParser {
     }
 
     private Sitemap parseSitemap(URL url, boolean recursive, Date minLastMod) {
-        HttpConnection httpConnection = new HttpConnection(url, userAgent, timeout, ignoreTlsCertificates);
-        try {
+        try (HttpConnection httpConnection = new HttpConnection(url, userAgent, timeout, ignoreTlsCertificates)) {
             int responseCode = httpConnection.getResponseCode();
             if (responseCode < 200 || responseCode >= 300) {
                 throw new InvalidSitemapUrlException("Sitemap URL " + url + " could not be loaded. HTTP status code "
                         + responseCode + " was returned.");
             }
             return parseSitemap(httpConnection.getInputStream(), url, recursive, minLastMod);
-        } finally {
-            httpConnection.disconnect();
         }
     }
 
@@ -341,8 +336,7 @@ public class SitemapParser {
                 continue;
             }
             URL sitemapUrl = HttpConnection.newUrl(sitemapIndex.getLoc());
-            HttpConnection httpConnection = new HttpConnection(sitemapUrl, userAgent, timeout, ignoreTlsCertificates);
-            try {
+            try (HttpConnection httpConnection = new HttpConnection(sitemapUrl, userAgent, timeout, ignoreTlsCertificates)) {
                 int responseCode = httpConnection.getResponseCode();
                 if (responseCode < 200 || responseCode >= 300) {
                     throw new InvalidSitemapUrlException("Sitemap URL " + sitemapUrl + " could not be loaded. HTTP status code "
@@ -353,8 +347,6 @@ public class SitemapParser {
                     throw new SitemapParseException("Sitemap index must not contain URLs to further sitemap indexes.");
                 }
                 sitemapEntries.addAll(sitemapParser.getSitemapEntries());
-            } finally {
-                httpConnection.disconnect();
             }
         }
         return new Sitemap(sitemapParser.getSitemapIndexes(), sitemapEntries, Sitemap.SitemapType.INDEX);

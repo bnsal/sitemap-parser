@@ -10,6 +10,7 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
+import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -23,7 +24,7 @@ import java.util.zip.GZIPInputStream;
 /**
  * @author Bithazard
  */
-class HttpConnection {
+class HttpConnection implements Closeable {
     private static final String USER_AGENT = "User-Agent";
     private static final String CONTENT_TYPE = "Content-Type";
     private static final String CONTENT_ENCODING = "Content-Encoding";
@@ -70,7 +71,7 @@ class HttpConnection {
     }
 
     public HttpConnection(URL url) {
-        this(url, null, 10000, true);
+        this(url, null, 15000, true);
     }
 
     public HttpConnection(URL url, String userAgent, int timeout, boolean ignoreTlsCertificates) {
@@ -133,7 +134,8 @@ class HttpConnection {
         }
     }
 
-    public void disconnect() {
+    @Override
+    public void close() {
         if (inputStream != null) {
             try {
                 inputStream.close();
