@@ -1,9 +1,9 @@
-package bithazard.sitemap.parser.model;
+package bnsal.sitemap.parser.model;
 
 /**
  * An exception that indicates that there was a problem creating the URL connection. This could also mean that the URL
  * itself was invalid.
- * @author Bithazard
+ * @author Bnsal
  */
 public class UrlConnectionException extends RuntimeException {
     /**

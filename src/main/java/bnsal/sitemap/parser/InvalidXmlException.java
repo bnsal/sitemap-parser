@@ -1,8 +1,8 @@
-package bithazard.sitemap.parser;
+package bnsal.sitemap.parser;
 
 /**
  * An exception that indicates that a file that should be parsed is not an XML file.
- * @author Bithazard
+ * @author Bnsal
  */
 class InvalidXmlException extends RuntimeException {
     /**

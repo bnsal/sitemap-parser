@@ -1,7 +1,4 @@
-package bithazard.sitemap.parser;
-
-import bithazard.sitemap.parser.model.InvalidSitemapUrlException;
-import bithazard.sitemap.parser.model.UrlConnectionException;
+package bnsal.sitemap.parser;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
@@ -10,6 +7,10 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
+
+import bnsal.sitemap.parser.model.InvalidSitemapUrlException;
+import bnsal.sitemap.parser.model.UrlConnectionException;
+
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,7 +23,7 @@ import java.security.cert.X509Certificate;
 import java.util.zip.GZIPInputStream;
 
 /**
- * @author Bithazard
+ * @author Bnsal
  */
 class HttpConnection implements Closeable {
     private static final String USER_AGENT = "User-Agent";
@@ -159,6 +160,22 @@ class HttpConnection implements Closeable {
     public static URL getRobotsTxtUrl(URL url) {
         try {
             return new URL(url.getProtocol(), url.getHost(), url.getPort(), "/robots.txt");
+        } catch (MalformedURLException e) {
+            throw new UrlConnectionException(e.getMessage());
+        }
+    }
+    
+    public static URL getDefaultSitemapUrl(URL url) {
+        try {
+            return new URL(url.getProtocol(), url.getHost(), url.getPort(), "/sitemap.xml");
+        } catch (MalformedURLException e) {
+            throw new UrlConnectionException(e.getMessage());
+        }
+    }
+    
+    public static URL getPostSitemapUrl(URL url) {
+        try {
+            return new URL(url.getProtocol(), url.getHost(), url.getPort(), "/post-sitemap.xml");
         } catch (MalformedURLException e) {
             throw new UrlConnectionException(e.getMessage());
         }

@@ -1,8 +1,8 @@
-package bithazard.sitemap.parser.model;
+package bnsal.sitemap.parser.model;
 
 /**
  * An exception that indicates that there was a problem parsing the sitemap.
- * @author Bithazard
+ * @author Bnsal
  */
 public class SitemapParseException extends RuntimeException {
     /**

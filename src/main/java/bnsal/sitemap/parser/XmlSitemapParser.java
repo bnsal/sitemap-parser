@@ -1,16 +1,17 @@
-package bithazard.sitemap.parser;
+package bnsal.sitemap.parser;
 
-import bithazard.sitemap.parser.model.Link;
-import bithazard.sitemap.parser.model.Sitemap;
-import bithazard.sitemap.parser.model.SitemapEntry;
-import bithazard.sitemap.parser.model.SitemapIndex;
-import bithazard.sitemap.parser.model.SitemapParseException;
-import bithazard.sitemap.parser.model.UrlConnectionException;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
+
+import bnsal.sitemap.parser.model.Link;
+import bnsal.sitemap.parser.model.Sitemap;
+import bnsal.sitemap.parser.model.SitemapEntry;
+import bnsal.sitemap.parser.model.SitemapIndex;
+import bnsal.sitemap.parser.model.SitemapParseException;
+import bnsal.sitemap.parser.model.UrlConnectionException;
 
 import javax.xml.bind.DatatypeConverter;
 import javax.xml.parsers.FactoryConfigurationError;
@@ -27,7 +28,7 @@ import java.util.Locale;
 import java.util.Set;
 
 /**
- * @author Bithazard
+ * @author Bnsal
  */
 class XmlSitemapParser implements ISitemapParser {
     private final InputStream inputStream;

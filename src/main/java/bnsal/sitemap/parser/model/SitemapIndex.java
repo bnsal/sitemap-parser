@@ -1,11 +1,11 @@
-package bithazard.sitemap.parser.model;
+package bnsal.sitemap.parser.model;
 
 import java.util.Date;
 
 /**
  * A sitemap index that contains links to actual sitemaps.
  * Class is immutable.
- * @author Bithazard
+ * @author Bnsal
  */
 public final class SitemapIndex {
     private final String loc;

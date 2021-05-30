@@ -1,13 +1,13 @@
-package bithazard.sitemap.parser;
-
-import bithazard.sitemap.parser.model.Sitemap;
-import bithazard.sitemap.parser.model.SitemapEntry;
-import bithazard.sitemap.parser.model.SitemapIndex;
+package bnsal.sitemap.parser;
 
 import java.util.Set;
 
+import bnsal.sitemap.parser.model.Sitemap;
+import bnsal.sitemap.parser.model.SitemapEntry;
+import bnsal.sitemap.parser.model.SitemapIndex;
+
 /**
- * @author Bithazard
+ * @author Bnsal
  */
 interface ISitemapParser {
     void parse();

@@ -1,11 +1,4 @@
-package bithazard.sitemap.parser;
-
-import bithazard.sitemap.parser.model.InvalidSitemapUrlException;
-import bithazard.sitemap.parser.model.Sitemap;
-import bithazard.sitemap.parser.model.SitemapEntry;
-import bithazard.sitemap.parser.model.SitemapIndex;
-import bithazard.sitemap.parser.model.SitemapParseException;
-import bithazard.sitemap.parser.model.UrlConnectionException;
+package bnsal.sitemap.parser;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -18,14 +11,21 @@ import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import bnsal.sitemap.parser.model.InvalidSitemapUrlException;
+import bnsal.sitemap.parser.model.Sitemap;
+import bnsal.sitemap.parser.model.SitemapEntry;
+import bnsal.sitemap.parser.model.SitemapIndex;
+import bnsal.sitemap.parser.model.SitemapParseException;
+import bnsal.sitemap.parser.model.UrlConnectionException;
+
 /**
  * A parser that can parse sitemaps in different formats and return a representation of the sitemap. It can also try to
  * determine the location of a sitemap. URLs can be passed as String or URL. Furthermore an InputStream may be passed
  * directly. Supported sitemaps are XML sitemaps, flat text sitemaps and sitemap indexes.
- * @author Bithazard
+ * @author Bnsal
  */
 public class SitemapParser {
-    private String userAgent = null;
+    private String userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36";
     private int timeout = 15000;
     private boolean ignoreTlsCertificates = true;
     private boolean continueOnErrors = false;
@@ -147,6 +147,24 @@ public class SitemapParser {
      * @throws UrlConnectionException when there was an exception retrieving the robots.txt file
      */
     public Set<String> getSitemapLocations(URL url) {
+
+    	Set<String> sitemapLines = new LinkedHashSet<>();
+        URL defaultSitemapUrl = HttpConnection.getDefaultSitemapUrl(url);
+        try (HttpConnection httpConnection = new HttpConnection(defaultSitemapUrl, userAgent, timeout, ignoreTlsCertificates)) {
+            int responseCode = httpConnection.getResponseCode();
+            if (responseCode == 200) {
+            	sitemapLines.add(defaultSitemapUrl.getProtocol() + "://" + defaultSitemapUrl.getHost() + defaultSitemapUrl.getPath());
+            }
+        }
+        
+        URL postSitemapUrl = HttpConnection.getDefaultSitemapUrl(url);
+        try (HttpConnection httpConnection = new HttpConnection(postSitemapUrl, userAgent, timeout, ignoreTlsCertificates)) {
+            int responseCode = httpConnection.getResponseCode();
+            if (responseCode == 200) {
+            	sitemapLines.add(postSitemapUrl.getProtocol() + "://" + postSitemapUrl.getHost() + postSitemapUrl.getPath());
+            }
+        }
+        
         URL robotsTxtUrl = HttpConnection.getRobotsTxtUrl(url);
         try (HttpConnection httpConnection = new HttpConnection(robotsTxtUrl, userAgent, timeout, ignoreTlsCertificates)) {
             int responseCode = httpConnection.getResponseCode();
@@ -154,7 +172,7 @@ public class SitemapParser {
                 throw new InvalidSitemapUrlException("Sitemap locations could not be found. Robots.txt returned HTTP status code "
                         + responseCode + ".");
             }
-            Set<String> sitemapLines = new LinkedHashSet<>();
+            
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpConnection.getInputStream(), StandardCharsets.UTF_8));
             String line;
             try {

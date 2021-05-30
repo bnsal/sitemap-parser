@@ -1,4 +1,4 @@
-package bithazard.sitemap.parser.model;
+package bnsal.sitemap.parser.model;
 
 import java.util.Collections;
 import java.util.Date;
@@ -9,7 +9,7 @@ import java.util.Set;
  * An entry of a sitemap (either of type XML or TEXT) that contains all relevant information of the entry. This can be
  * only the URL (loc), in case of a TEXT sitemap or further information in case of an XML sitemap.
  * Class is immutable.
- * @author Bithazard
+ * @author Bnsal
  */
 public final class SitemapEntry {
     private final String loc;

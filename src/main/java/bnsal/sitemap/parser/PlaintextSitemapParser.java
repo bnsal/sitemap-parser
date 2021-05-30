@@ -1,10 +1,4 @@
-package bithazard.sitemap.parser;
-
-import bithazard.sitemap.parser.model.Sitemap;
-import bithazard.sitemap.parser.model.SitemapEntry;
-import bithazard.sitemap.parser.model.SitemapIndex;
-import bithazard.sitemap.parser.model.SitemapParseException;
-import bithazard.sitemap.parser.model.UrlConnectionException;
+package bnsal.sitemap.parser;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,8 +9,14 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
 
+import bnsal.sitemap.parser.model.Sitemap;
+import bnsal.sitemap.parser.model.SitemapEntry;
+import bnsal.sitemap.parser.model.SitemapIndex;
+import bnsal.sitemap.parser.model.SitemapParseException;
+import bnsal.sitemap.parser.model.UrlConnectionException;
+
 /**
- * @author Bithazard
+ * @author Bnsal
  */
 class PlaintextSitemapParser implements ISitemapParser {
     private static final Pattern URL_PATTERN = Pattern.compile("https?://[A-Za-z0-9\\-\\._~:/\\?#\\[\\]@!\\$&'\\(\\)\\*\\+,;=%]+");

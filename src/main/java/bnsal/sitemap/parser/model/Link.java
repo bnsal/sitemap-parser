@@ -1,9 +1,9 @@
-package bithazard.sitemap.parser.model;
+package bnsal.sitemap.parser.model;
 
 /**
  * A link to (usually) alternative language versions of a URL.
  * Class is immutable.
- * @author Bithazard
+ * @author Bnsal
  * @see <a href="https://support.google.com/webmasters/answer/2620865">Use a sitemap to indicate alternate language pages</a>
  */
 public final class Link {

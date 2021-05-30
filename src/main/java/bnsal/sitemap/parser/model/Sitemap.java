@@ -1,4 +1,4 @@
-package bithazard.sitemap.parser.model;
+package bnsal.sitemap.parser.model;
 
 import java.util.Collections;
 import java.util.Date;
@@ -10,7 +10,7 @@ import java.util.Set;
 /**
  * An abstraction of an actual sitemap. This class contains all information that are logically relevant for a sitemap.
  * Class is immutable.
- * @author Bithazard
+ * @author Bnsal
  */
 public final class Sitemap {
     private final Set<SitemapIndex> sitemapIndexes;
@@ -22,7 +22,7 @@ public final class Sitemap {
      * @param sitemapIndexes    The sitemap indexes if the sitemap if the sitemap is of type INDEX. An empty Set otherwise.
      * @param sitemapEntries    All sitemap entries of the sitemap or of all referenced sitemaps of a sitemap index
      * @param sitemapType       The type of the sitemap. Must not be null
-     * @see bithazard.sitemap.parser.model.Sitemap.SitemapType
+     * @see bnsal.sitemap.parser.model.Sitemap.SitemapType
      */
     public Sitemap(Set<SitemapIndex> sitemapIndexes, Set<SitemapEntry> sitemapEntries, SitemapType sitemapType) {
         this.sitemapIndexes = Collections.unmodifiableSet(new LinkedHashSet<>(sitemapIndexes));
@@ -73,7 +73,7 @@ public final class Sitemap {
     /**
      * Get the type of the sitemap.
      * @return the type of the sitemap
-     * @see bithazard.sitemap.parser.model.Sitemap.SitemapType
+     * @see bnsal.sitemap.parser.model.Sitemap.SitemapType
      */
     public SitemapType getSitemapType() {
         return sitemapType;
@@ -102,9 +102,9 @@ public final class Sitemap {
      * @param minLastMod    The date after which entries and indexes must be modified to remain in the returned sitemap
      * @return a copy of this sitemap containing only sitemap entries and sitemap indexes whose last modified date is
      * after the passed date.
-     * @see bithazard.sitemap.parser.SitemapParser#parseSitemap(java.io.InputStream, java.net.URL, java.util.Date)
-     * @see bithazard.sitemap.parser.SitemapParser#parseSitemap(String, java.util.Date)
-     * @see bithazard.sitemap.parser.SitemapParser#parseSitemap(java.net.URL, boolean, java.util.Date)
+     * @see bnsal.sitemap.parser.SitemapParser#parseSitemap(java.io.InputStream, java.net.URL, java.util.Date)
+     * @see bnsal.sitemap.parser.SitemapParser#parseSitemap(String, java.util.Date)
+     * @see bnsal.sitemap.parser.SitemapParser#parseSitemap(java.net.URL, boolean, java.util.Date)
      */
     public Sitemap getSitemapModifiedAfter(Date minLastMod) {
         Set<SitemapIndex> sitemapIndexesModifiedAfter = new LinkedHashSet<>();

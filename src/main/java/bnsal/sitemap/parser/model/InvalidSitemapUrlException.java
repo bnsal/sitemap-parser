@@ -1,9 +1,9 @@
-package bithazard.sitemap.parser.model;
+package bnsal.sitemap.parser.model;
 
 /**
  * An exception that indicates that a supplied sitemap URL was invalid. This could mean that the URL itself was invalid
  * or that no sitemap could be found at this URL.
- * @author Bithazard
+ * @author Bnsal
  */
 public class InvalidSitemapUrlException extends RuntimeException {
     /**
