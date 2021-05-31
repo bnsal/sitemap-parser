@@ -1,4 +1,4 @@
-package com.bnsal.web.model;
+package com.bnsal.model;
 
 /**
  * An exception that indicates that there was a problem parsing the sitemap.
