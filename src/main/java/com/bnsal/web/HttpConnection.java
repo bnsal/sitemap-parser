@@ -1,4 +1,4 @@
-package bnsal.sitemap.parser;
+package com.bnsal.web;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
@@ -8,8 +8,8 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
-import bnsal.sitemap.parser.model.InvalidSitemapUrlException;
-import bnsal.sitemap.parser.model.UrlConnectionException;
+import com.bnsal.web.model.InvalidSitemapUrlException;
+import com.bnsal.web.model.UrlConnectionException;
 
 import java.io.Closeable;
 import java.io.IOException;

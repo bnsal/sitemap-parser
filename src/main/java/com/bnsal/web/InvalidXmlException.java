@@ -1,4 +1,4 @@
-package bnsal.sitemap.parser;
+package com.bnsal.web;
 
 /**
  * An exception that indicates that a file that should be parsed is not an XML file.

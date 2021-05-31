@@ -1,4 +1,4 @@
-package bnsal.sitemap.parser.model;
+package com.bnsal.web.model;
 
 /**
  * A link to (usually) alternative language versions of a URL.

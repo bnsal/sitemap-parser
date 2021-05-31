@@ -1,4 +1,4 @@
-package bnsal.sitemap.parser.model;
+package com.bnsal.web.model;
 
 import java.util.Date;
 

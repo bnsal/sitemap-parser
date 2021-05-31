@@ -1,4 +1,4 @@
-package bnsal.sitemap.parser.model;
+package com.bnsal.web.model;
 
 /**
  * An exception that indicates that a supplied sitemap URL was invalid. This could mean that the URL itself was invalid
