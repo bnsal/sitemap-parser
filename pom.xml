@@ -4,12 +4,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.bnsal.web</groupId>
+	<groupId>com.bnsal</groupId>
 	<artifactId>sitemap-parser</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.3</version>
 	<packaging>jar</packaging>
 
-	<name>com.bnsal.web:sitemap-parser</name>
+	<name>com.bnsal:sitemap-parser</name>
 	<description>Scrape sitemap of any website from Robots.txt and Sitemap.xml file</description>
 	<url>https://github.com/bnsal/sitemap-parser</url>
 

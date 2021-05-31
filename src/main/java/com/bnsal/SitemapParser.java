@@ -1,4 +1,4 @@
-package com.bnsal.web;
+package com.bnsal;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -11,12 +11,12 @@ import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import com.bnsal.web.model.InvalidSitemapUrlException;
-import com.bnsal.web.model.Sitemap;
-import com.bnsal.web.model.SitemapEntry;
-import com.bnsal.web.model.SitemapIndex;
-import com.bnsal.web.model.SitemapParseException;
-import com.bnsal.web.model.UrlConnectionException;
+import com.bnsal.model.InvalidSitemapUrlException;
+import com.bnsal.model.Sitemap;
+import com.bnsal.model.SitemapEntry;
+import com.bnsal.model.SitemapIndex;
+import com.bnsal.model.SitemapParseException;
+import com.bnsal.model.UrlConnectionException;
 
 /**
  * A parser that can parse sitemaps in different formats and return a representation of the sitemap. It can also try to

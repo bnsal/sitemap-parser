@@ -1,4 +1,4 @@
-package com.bnsal.web.model;
+package com.bnsal.model;
 
 /**
  * A link to (usually) alternative language versions of a URL.
