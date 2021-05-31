@@ -1,10 +1,10 @@
-package com.bnsal;
+package com.bnsal.web;
 
 import java.util.Set;
 
-import com.bnsal.model.Sitemap;
-import com.bnsal.model.SitemapEntry;
-import com.bnsal.model.SitemapIndex;
+import com.bnsal.web.model.Sitemap;
+import com.bnsal.web.model.SitemapEntry;
+import com.bnsal.web.model.SitemapIndex;
 
 /**
  * @author Bnsal

@@ -1,4 +1,4 @@
-package com.bnsal;
+package com.bnsal.web;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
@@ -6,12 +6,12 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import com.bnsal.model.Link;
-import com.bnsal.model.Sitemap;
-import com.bnsal.model.SitemapEntry;
-import com.bnsal.model.SitemapIndex;
-import com.bnsal.model.SitemapParseException;
-import com.bnsal.model.UrlConnectionException;
+import com.bnsal.web.model.Link;
+import com.bnsal.web.model.Sitemap;
+import com.bnsal.web.model.SitemapEntry;
+import com.bnsal.web.model.SitemapIndex;
+import com.bnsal.web.model.SitemapParseException;
+import com.bnsal.web.model.UrlConnectionException;
 
 import javax.xml.bind.DatatypeConverter;
 import javax.xml.parsers.FactoryConfigurationError;

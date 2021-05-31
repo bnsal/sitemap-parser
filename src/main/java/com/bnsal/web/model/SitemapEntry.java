@@ -1,4 +1,4 @@
-package com.bnsal.model;
+package com.bnsal.web.model;
 
 import java.util.Collections;
 import java.util.Date;

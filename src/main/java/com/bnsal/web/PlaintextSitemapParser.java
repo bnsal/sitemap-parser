@@ -1,4 +1,4 @@
-package com.bnsal;
+package com.bnsal.web;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,11 +9,11 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-import com.bnsal.model.Sitemap;
-import com.bnsal.model.SitemapEntry;
-import com.bnsal.model.SitemapIndex;
-import com.bnsal.model.SitemapParseException;
-import com.bnsal.model.UrlConnectionException;
+import com.bnsal.web.model.Sitemap;
+import com.bnsal.web.model.SitemapEntry;
+import com.bnsal.web.model.SitemapIndex;
+import com.bnsal.web.model.SitemapParseException;
+import com.bnsal.web.model.UrlConnectionException;
 
 /**
  * @author Bnsal
