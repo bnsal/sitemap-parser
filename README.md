@@ -8,6 +8,17 @@ Java library to parse sitemaps using Robots.txt and default /sitemap.xml path. F
 - currently built with Maven
 - MIT license
 
+
+**Downlod Directly or Import using Maven:**
+```
+<!-- add dependency -->
+<dependency>
+    <groupId>com.bnsal</groupId>
+    <artifactId>sitemap-parser</artifactId>
+    <version>1.0.3</version>
+</dependency>
+```
+
 **To get you started:**
 
     SitemapParser sitemapParser = new SitemapParser();
